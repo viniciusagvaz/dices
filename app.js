@@ -33,22 +33,21 @@ const renderDices = () => {
 const renderResults = () => {
   let result = document.querySelector(".result");
 
-  if (result){
+  if (result) {
     if (dice1 > dice2) {
       return (result.textContent = `Player 1 wins!`);
     }
-  
+
     if (dice1 < dice2) {
       return (result.textContent = `Player 2 wins!`);
     }
-  
+
     if (dice1 === dice2) {
       return (result.textContent = `It's a draw!`);
     }
   } else {
-    console.error(`Could not found the results element`)
+    console.error(`Could not found the results element`);
   }
-
 };
 
 button.addEventListener("click", rollDice);
