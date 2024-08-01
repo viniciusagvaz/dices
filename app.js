@@ -1,39 +1,51 @@
-let rollDice1 = Math.floor(Math.random() * 6) + 1;
-let rollDice2 = Math.floor(Math.random() * 6) + 1;
-const button = document.querySelector('button')
+let dice1;
+let dice2;
+const button = document.querySelector("button");
 
+const dice = {
+  sides: 6,
+  roll: function () {
+    const diceResult = Math.floor(Math.random() * this.sides) + 1;
+    return diceResult;
+  },
+};
 
-function renderDices() {
-  const dice1 = document.querySelector(".img1");
-  const dice2 = document.querySelector(".img2");
+const rollDice = () => {
+  dice1 = dice.roll();
+  dice2 = dice.roll();
 
-  dice1.src = `./images/dice${rollDice1}.png`;
-  dice2.src = `./images/dice${rollDice2}.png`;
-}
+  renderDices();
+  renderResults();
+};
 
-function renderResults() {
+const rollAgain = () => {
+  rollDice();
+};
+
+const renderDices = () => {
+  const diceImg1 = document.querySelector(".img1");
+  const diceImg2 = document.querySelector(".img2");
+
+  diceImg1.src = `./images/dice${dice1}.png`;
+  diceImg2.src = `./images/dice${dice2}.png`;
+};
+
+const renderResults = () => {
   let result = document.querySelector(".result");
 
-  if (rollDice1 > rollDice2) {
+  if (dice1 > dice2) {
     return (result.textContent = `Player 1 wins!`);
-   //  return (result.innerHTML = `&#128681 Player 1 wins!`);
   }
 
-  if (rollDice1 < rollDice2) {
-    return (result.textContent = `Player 2 wins!` );
-   //  return (result.innerHTML = `Player 2 wins! &#128681` );
+  if (dice1 < dice2) {
+    return (result.textContent = `Player 2 wins!`);
   }
 
-  if (rollDice1 === rollDice2) {
+  if (dice1 === dice2) {
     return (result.textContent = `It's a draw!`);
   }
-}
+};
 
+button.addEventListener("click", rollAgain);
 
-button.addEventListener('click', () => {
-  location.reload()
-})
-
-
-renderDices();
-renderResults();
+rollDice();

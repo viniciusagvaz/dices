@@ -7,7 +7,6 @@
 .dice {
   text-align: center;
   display: inline-block;
-
 }
 
 body {
@@ -32,23 +31,27 @@ img {
   width: 80%;
 }
 
-button {
+button {  
+  max-width: fit-content;
   width: 100%;
-  margin: 2rem auto 0;
+  margin: 0 auto;
+
   background-color: transparent;
   border: none;
   color: #4ECCA3;
   font-size: 2rem;
-
+ 
   &:hover{
+    transition: .2s ease-in;
     color: aliceblue;
+    cursor: pointer;
   }
 }
 
 footer {
-  margin-top: 5%;
-  color: #EEEEEE;
-  text-align: center;
+  max-width: fit-content;
+  width: 100%;
+  margin: 5% auto 0;
+  color: #5e5d5d;
   font-family: 'Indie Flower', cursive;
-
 }
